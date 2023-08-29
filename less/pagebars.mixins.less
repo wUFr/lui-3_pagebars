@@ -1,0 +1,123 @@
+//
+// LUI-3
+// (C) Jiří Bělský (github.com/wUFr)
+// MIT licenced
+//
+
+
+.lui.pagebar when (@lui_pagebar_mixins_enabled = true){
+	.this() when (@lui_pagebar_mixins_this_enabled = true){
+		.lui.box-sizing.border-box();
+		.lui.flexbox.block();
+		.lui.flexbox.flex-direction(row);
+		.lui.flexbox.flex-wrap(wrap);
+
+		list-style: none; // IN CASE OF UL
+		font-size: 14px;
+		line-height: 14px;
+		padding: 0;
+		margin: 0;
+	}
+
+	.item-normal() when (@lui_pagebar_mixins_item-normal_enabled = true){
+		padding: 0;
+		margin: 2px;
+		display: inline-block;
+	}
+
+	.item-minimal() when (@lui_pagebar_mixins_item-minimal_enabled = true){
+		padding: 0;
+		display: none;
+	}
+
+	.prev() when (@lui_pagebar_mixins_prev_enabled = true){
+		&:before {
+			font-family: FontAwesome;
+			content: "\f053";
+		}
+
+		span {
+			padding: 0 0 0 10px;
+		}
+	}
+
+	.next() when (@lui_pagebar_mixins_next_enabled = true){
+		&:after {
+			font-family: FontAwesome;
+			content: "\f054";
+		}
+
+		span {
+			padding: 0 10px 0 0;
+		}
+	}
+
+	.number() when (@lui_pagebar_mixins_number_enabled = true){
+		display: block;
+		height: 37px;
+		line-height: 37px;
+		padding: 0 15px;
+		color: @lui_pagebar_defailt_item_color;
+		text-decoration: none;
+		background: @lui_pagebar_defailt_item_bg;
+		border-radius: 5px;
+		cursor: pointer;
+
+		&:hover {
+			color: inherit;
+			background: darken(@lui_pagebar_defailt_item_bg, 10%);
+		}
+	}
+
+	.number-active() when (@lui_pagebar_mixins_number_active_enabled = true){
+		color: inherit;
+		background: darken(@lui_pagebar_defailt_item_bg, 10%);
+	}
+
+	.number-dark() when (@lui_pagebar_mixins_number_dark_enabled = true){
+		background: @lui_pagebar_dark_item_bg;
+		color: @lui_pagebar_dark_item_color;
+
+		&:hover {
+			background: darken(@lui_pagebar_dark_item_bg, 20%);
+		}
+	}
+
+	.number-dark-active() when (@lui_pagebar_mixins_number_dark_active_enabled = true){
+		background: darken(@lui_pagebar_dark_item_bg, 20%);
+	}
+
+	.input() when (@lui_pagebar_mixins_input_enabled = true){
+		.lui.flexbox.block();
+		.lui.flexbox.align-items(center);
+		.lui.flexbox.justify-content(center);
+
+		background: none;
+		height: 37px;
+
+		label {
+			padding: 0 15px;
+		}
+
+		input {
+			.lui.form.item.value.input(60px);
+			text-align: center;
+
+			// HIDE ARROWS
+			-webkit-appearance: textfield;
+			-moz-appearance: textfield;
+
+			&::-webkit-outer-spin-button,
+			&::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+
+		}
+	}
+
+	.inactive() when (@lui_pagebar_mixins_inactive_enabled = true){
+		cursor: default;
+		pointer-events: none;
+	}
+}
